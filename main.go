@@ -1,10 +1,10 @@
 package main
 
 import (
+	"html/template"
 	"io"
 	"net/http"
 	"strconv"
-	"text/template"
 	"time"
 
 	"github.com/labstack/echo/v4"
