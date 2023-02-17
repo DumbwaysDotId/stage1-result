@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"personal-web/connection"
 	"personal-web/middleware"
 	"strconv"
-	"text/template"
 	"time"
 
 	"github.com/gorilla/sessions"
