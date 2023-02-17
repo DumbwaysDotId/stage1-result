@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"html/template"
 	"io"
 	"net/http"
 	"personal-web/connection"
 	"strconv"
-	"text/template"
 	"time"
 
 	"github.com/labstack/echo/v4"
