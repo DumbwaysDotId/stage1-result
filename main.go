@@ -64,12 +64,12 @@ func main() {
 	e.GET("/blog", blog)
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/form-blog", formAddBlog)
-	e.GET("/blog-delete/:id", deleteBlog)
+	e.POST("/delete-blog/:id", deleteBlog)
 	e.POST("/add-blog", addBlog)
 
 	// Start server
-	println("Server running on port 5000")
-	e.Logger.Fatal(e.Start("localhost:5000"))
+	println("Server running on port 7000")
+	e.Logger.Fatal(e.Start("localhost:7000"))
 }
 
 func helloWorld(c echo.Context) error {
@@ -143,5 +143,5 @@ func deleteBlog(c echo.Context) error {
 
 	dataBlog = append(dataBlog[:id], dataBlog[id+1:]...)
 
-	return c.Redirect(http.StatusFound, "/blog")
+	return c.Redirect(http.StatusMovedPermanently, "/blog")
 }
