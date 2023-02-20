@@ -72,7 +72,7 @@ func main() {
 	e.GET("/blog", blog)
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/form-blog", formAddBlog)
-	e.GET("/blog-delete/:id", deleteBlog)
+	e.GET("/delete-blog/:id", deleteBlog)
 	e.POST("/add-blog", addBlog)
 
 	// Start server
@@ -168,5 +168,5 @@ func deleteBlog(c echo.Context) error {
 
 	dataBlog = append(dataBlog[:id], dataBlog[id+1:]...)
 
-	return c.Redirect(http.StatusFound, "/blog")
+	return c.Redirect(http.StatusMovedPermanently, "/blog")
 }
