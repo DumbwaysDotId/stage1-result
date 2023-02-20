@@ -72,7 +72,7 @@ func main() {
 	e.GET("/blog", blog)
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/form-blog", formAddBlog)
-	e.GET("/delete-blog/:id", deleteBlog)
+	e.GET("/blog-delete/:id", deleteBlog)
 	e.POST("/add-blog", addBlog)
 
 	// Start server

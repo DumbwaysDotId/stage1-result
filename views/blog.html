@@ -2,7 +2,7 @@
 
 <head>
   <title>Creating Blog Page</title>
-  <link rel="stylesheet" href="/public/css/blog.css" />
+  <link rel="stylesheet" href="public/css/blog.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,7 +13,7 @@
   <nav>
     <div class="left-side">
       <a href="/">
-        <img src="/public/images/logo.png" alt="logo" />
+        <img src="public/images/logo.png" alt="logo" />
       </a>
       <ul>
         <li>
@@ -32,53 +32,6 @@
   <!-- Blog -->
   <!-- Form -->
   <div class="blog">
-    <!-- <div class="blog-form">
-        <div class="form-container">
-          <form onsubmit="addBlog(event)">
-            <h1>Create Post Blog</h1>
-            <div>
-              <label for="input-blog-title">Title</label>
-              <input id="input-blog-title" />
-            </div>
-            <div>
-              <label for="input-blog-content">Content</label>
-              <textarea id="input-blog-content"></textarea>
-            </div>
-            <div>
-              <label for="">Start Date</label>
-              <input type="date" id="start-date">
-              <label for="">End Date</label>
-              <input type="date" id="end-date">
-            </div>
-
-            <div>
-              <label for="">Facebook</label>
-              <input type="checkbox" value="facebook" id="input-fb">
-
-              <label for="">Instagram</label>
-              <input type="checkbox" value="instagram" id="input-ig">
-
-              <label for="">Tiktok</label>
-              <input type="checkbox" value="tiktok" id="input-tok">
-            </div>
-
-            <div>
-              <label>Upload Image</label>
-              <div class="input-blog-image-group">
-                <label for="input-blog-image">
-                  <p>Attach File</p>
-                  <img src="/public/images/file.png" alt="file" />
-                </label>
-                <input type="file" id="input-blog-image" hidden />
-              </div>
-            </div>
-            <div class="button-group">
-              <button>Post Blog</button>
-            </div>
-          </form>
-        </div>
-      </div> -->
-
     <!-- <hr class="line" /> -->
     <div style="margin-top: 50px; text-align:end; margin-right: 120px;">
       <a href="/form-blog"
@@ -91,14 +44,12 @@
       {{range $index, $data := .Blogs}}
       <div class="blog-list-item">
         <div class="blog-image">
-          <img src="/public/images/blog-img.png" alt="" />
+          <img src="public/images/{{$data.Image}}" alt="" />
         </div>
         <div class="blog-content">
-          <div class="btn-group" style="display:flex;width: 100%; justify-content:flex-end;">
+          <div class="btn-group">
             <a href="#" class="btn-edit">Edit Post</a>
-            <form action="/delete-blog/{{$index}}" method="POST" style="margin-left:10px">
-              <input type="submit" class="btn-post" value="Delete Blog" style="cursor:pointer">
-            </form>
+            <a href="/blog-delete/{{$index}}" class="btn-post">Delete Blog</a>
           </div>
           <h1>
             <a href="/blog-detail/{{$index}}" target="_blank">{{$data.Title}}</a>
@@ -122,7 +73,6 @@
   </div>
 
   <script>
-
   </script>
 </body>
 
