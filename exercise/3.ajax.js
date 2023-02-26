@@ -8,7 +8,7 @@ xhr.open('GET', 'https://your-url', true);
 // param 3 : true or false, if true mean that we using asynchronous WebAssembly, and false means we using synchronous way. It is recommended to make it true (async)
 
 xhr.onload = function () { } // to load and check the status of the request
-xhr.onload = function () { } // loaded when it is error when we requesting the data
+xhr.onerror = function () { } // loaded when it is error when we requesting the data
 xhr.send(); // send the request to the server.
 
 
