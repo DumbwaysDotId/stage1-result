@@ -2,8 +2,8 @@
 // - making class
 // - making object
 // - called it so it appear in browser using loop and innerHTML
-// - refactor the code so it implement encapsulation, use getter and setter(the key point is : encapsulation make app more secure by implementing restriction)
 // - refactor the code so it implements inheritance AuthorTestimonial
+// - refactor the code so it implement encapsulation, use getter and setter(the key point is : encapsulation make app more secure by implementing restriction)
 // - refactor the code so it implementes polymorphism by making class CompanyTestimonial and override get author(the key point is polymorphism implement and overriding)
 // - refactor code so it implements abstraction by making get testimonialHTML and get author throw error when children didn't use it
 
