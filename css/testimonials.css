@@ -174,10 +174,6 @@ nav ul li {
     align-items: center;
 }
 
-.container-rating {
-    display: flex;
-}
-
 
 .rating-btn {
     margin: 20px;
