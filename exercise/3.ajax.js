@@ -1,5 +1,6 @@
 // What is ajax?
 // basically ajax, is simply an technique in javascript to make we can interact with asynchronous request. Example, if you get data from internet.
+const xhr = new XMLHttpRequest();
 
 // But the basic syntax for we learn looks like this :
 xhr.open('GET', 'https://your-url', true);
