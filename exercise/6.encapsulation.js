@@ -1,12 +1,15 @@
 // Encapsulation
 class Car {
+    #make = ""
+    #model = ""
+
     constructor(make, model) {
-        this._make = make;
-        this._model = model;
+        this.#make = make;
+        this.#model = model;
     }
 
     get make() {
-        return this._make;
+        return this.#make;
     }
 
     set make(value) {
@@ -14,11 +17,11 @@ class Car {
             console.log("The make cannot be an empty string.");
             return;
         }
-        this._make = value;
+        this.#make = value;
     }
 
     get model() {
-        return this._model;
+        return this.#model;
     }
 
     set model(value) {
@@ -26,11 +29,11 @@ class Car {
             console.log("The model cannot be an empty string.");
             return;
         }
-        this._model = value;
+        this.#model = value;
     }
 
     drive() {
-        console.log(`Driving a ${this._make} ${this._model}.`);
+        console.log(`Driving a ${this.#make} ${this.#model}.`);
     }
 }
 

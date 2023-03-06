@@ -1,16 +1,19 @@
 // Abstraction:
 class Car {
+    #make = ""
+    #model = ""
+
     constructor(make, model) {
-        this._make = make;
-        this._model = model;
+        this.#make = make;
+        this.#model = model;
     }
 
     get make() {
-        return this._make;
+        return this.#make;
     }
 
     get model() {
-        return this._model;
+        return this.#model;
     }
 }
 
