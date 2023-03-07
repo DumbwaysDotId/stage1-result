@@ -22,7 +22,7 @@ async function getAllTestimonials() {
     console.log(response)
 
     let testimonialHTML = '';
-    const testimonial = response.map(function (item) {
+    response.forEach(function (item) {
         testimonialHTML += `<div class="testimonial">
             <img src="${item.image}" class="profile-testimonial" />
             <p class="quote">"${item.quote}"</p>
@@ -50,7 +50,7 @@ async function getFilteredTestimonials(rating) {
     if (testimonialFiltered.length === 0) {
         testimonialHTML = '<h1> Data not found! </h1>';
     } else {
-        const testimonial = testimonialFiltered.map(function (item) {
+        testimonialFiltered.forEach(function (item) {
             testimonialHTML += `<div class="testimonial">
                 <img src="${item.image}" class="profile-testimonial" />
                 <p class="quote">"${item.quote}"</p>
