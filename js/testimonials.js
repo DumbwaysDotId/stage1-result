@@ -8,17 +8,20 @@
 // - refactor code so it implements abstraction by making get testimonialHTML and get author throw error when children didn't use it
 
 // class Testimonial {
+//     #quote = ""
+//     #image = ""
+
 //     constructor(quote, image) {
-//         this._quote = quote;
-//         this._image = image;
+//         this.#quote = quote;
+//         this.#image = image;
 //     }
 
 //     get quote() {
-//         return this._quote;
+//         return this.#quote;
 //     }
 
 //     get image() {
-//         return this._image;
+//         return this.#image;
 //     }
 
 //     // This is an abstract method that subclasses will implement
@@ -32,28 +35,33 @@
 //             <img src="${this.image}" class="profile-testimonial" />
 //             <p class="quote">"${this.quote}"</p>
 //             <p class="author">- ${this.author}</p>
-//         </div>`;//    }
+//         </div>`;
+//     }
 // }
 
 // class AuthorTestimonial extends Testimonial {
+//     #author = ""
+
 //     constructor(author, quote, image) {
 //         super(quote, image);
-//         this._author = author;
+//         this.#author = author;
 //     }
 
 //     get author() {
-//         return this._author;
+//         return this.#author;
 //     }
 // }
 
 // class CompanyTestimonial extends Testimonial {
+//     #company = ""
+
 //     constructor(company, quote, image) {
 //         super(quote, image);
-//         this._company = company;
+//         this.#company = company;
 //     }
 
 //     get author() {
-//         return this._company;
+//         return this.#company + " Company";
 //     }
 // }
 
@@ -61,7 +69,7 @@
 
 // const testimonial2 = new AuthorTestimonial('Surya Elz', 'Keren lah pokoknya!', 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
 
-// const testimonial3 = new CompanyTestimonial('ABC Company', 'Wuhuu keren lah!', 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+// const testimonial3 = new CompanyTestimonial('ABC', 'Wuhuu keren lah!', 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
 
 // let testimonialData = [testimonial1, testimonial2, testimonial3];
 // let testimonialHTML = '';
@@ -72,7 +80,7 @@
 
 // document.getElementById('testimonials').innerHTML = testimonialHTML;
 
-// 
+// array of object
 
 const testimonialData = [
     {
