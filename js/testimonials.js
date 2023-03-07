@@ -119,7 +119,6 @@ function allTestimonials() {
 
 allTestimonials()
 
-
 // filter testimonials
 function filterTestimonials(rating) {
     let testimonialHTML = '';
