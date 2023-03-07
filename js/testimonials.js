@@ -72,8 +72,7 @@
 
 // document.getElementById('testimonials').innerHTML = testimonialHTML;
 
-// 
-
+// array of objects
 const testimonialData = [
     {
         author: "Surya Elidanto",
@@ -98,7 +97,7 @@ const testimonialData = [
 function allTestimonials() {
     let testimonialHTML = '';
 
-    const testimonial = testimonialData.map(function (item) {
+    testimonialData.forEach(function (item) {
         testimonialHTML += `<div class="testimonial">
             <img src="${item.image}" class="profile-testimonial" />
             <p class="quote">"${item.quote}"</p>
@@ -126,7 +125,7 @@ function filterTestimonials(rating) {
     if (testimonialFiltered.length === 0) {
         testimonialHTML = `<h1> Data not found! </h1>`
     } else {
-        const testimonial = testimonialFiltered.map(function (item) {
+        testimonialFiltered.forEach(function (item) {
             testimonialHTML += `<div class="testimonial">
                 <img src="${item.image}" class="profile-testimonial" />
                 <p class="quote">"${item.quote}"</p>
