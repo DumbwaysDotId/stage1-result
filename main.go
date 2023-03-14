@@ -53,8 +53,8 @@ func main() {
 	e.POST("/add-blog", addBlog)
 
 	// Start server
-	println("Server running on port 7000")
-	e.Logger.Fatal(e.Start("localhost:7000"))
+	println("Server running on port 5000")
+	e.Logger.Fatal(e.Start("localhost:5000"))
 }
 
 func helloWorld(c echo.Context) error {
