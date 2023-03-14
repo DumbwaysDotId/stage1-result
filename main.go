@@ -284,12 +284,12 @@ func login(c echo.Context) error {
 	user := User{}
 	err = connection.Conn.QueryRow(context.Background(), "SELECT * FROM tb_user WHERE email=$1", email).Scan(&user.ID, &user.Name, &user.Email, &user.Password)
 	if err != nil {
-		return redirectWithMessage(c, "Email or password incorrect!", false, "/form-login")
+		return redirectWithMessage(c, "Email incorrect!", false, "/form-login")
 	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
 	if err != nil {
-		return redirectWithMessage(c, "Email or password incorrect!", false, "/form-login")
+		return redirectWithMessage(c, "Password incorrect!", false, "/form-login")
 	}
 
 	sess, _ := session.Get("session", c)
