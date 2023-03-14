@@ -3,12 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"html/template"
-	"io"
 	"log"
 	"net/http"
 	"personal-web/connection"
 	"strconv"
+	"text/template"
 	"time"
 
 	"github.com/gorilla/sessions"
@@ -16,14 +15,6 @@ import (
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
 )
-
-type Template struct {
-	templates *template.Template
-}
-
-func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
-	return t.templates.ExecuteTemplate(w, name, data)
-}
 
 type Blog struct {
 	ID         int
@@ -63,12 +54,6 @@ func main() {
 	// Serve static files from "/public" directory
 	e.Static("/public", "public")
 
-	t := &Template{
-		templates: template.Must(template.ParseGlob("views/*.html")),
-	}
-
-	e.Renderer = t
-
 	// To use sessions using echo
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("session"))))
 
@@ -80,7 +65,7 @@ func main() {
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/form-blog", formAddBlog)
 	e.POST("/add-blog", addBlog)
-	e.GET("/blog-delete/:id", deleteBlog)
+	e.POST("/blog-delete/:id", deleteBlog)
 
 	e.GET("/form-register", formRegister)
 	e.POST("/register", register)
@@ -111,11 +96,23 @@ func home(c echo.Context) error {
 	delete(sess.Values, "status")
 	sess.Save(c.Request(), c.Response())
 
-	return c.Render(http.StatusOK, "index.html", flash)
+	var tmpl, err = template.ParseFiles("views/index.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), flash)
 }
 
 func contact(c echo.Context) error {
-	return c.Render(http.StatusOK, "contact.html", nil)
+	var tmpl, err = template.ParseFiles("views/contact.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), nil)
 }
 
 func blog(c echo.Context) error {
@@ -151,7 +148,13 @@ func blog(c echo.Context) error {
 		"DataSession": userData,
 	}
 
-	return c.Render(http.StatusOK, "blog.html", blogs)
+	var tmpl, err = template.ParseFiles("views/blog.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), blogs)
 }
 
 func blogDetail(c echo.Context) error {
@@ -173,11 +176,24 @@ func blogDetail(c echo.Context) error {
 		"Blog": BlogDetail,
 	}
 
-	return c.Render(http.StatusOK, "blog-detail.html", data)
+	var tmpl, errTemplate = template.ParseFiles("views/blog-detail.html")
+
+	if errTemplate != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), data)
 }
 
 func formAddBlog(c echo.Context) error {
-	return c.Render(http.StatusOK, "add-blog.html", nil)
+
+	var tmpl, err = template.ParseFiles("views/add-blog.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), nil)
 }
 
 func addBlog(c echo.Context) error {
@@ -207,7 +223,13 @@ func deleteBlog(c echo.Context) error {
 }
 
 func formRegister(c echo.Context) error {
-	return c.Render(http.StatusOK, "form-register.html", nil)
+	var tmpl, err = template.ParseFiles("views/form-register.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), nil)
 }
 
 func register(c echo.Context) error {
@@ -242,7 +264,13 @@ func formLogin(c echo.Context) error {
 	delete(sess.Values, "status")
 	sess.Save(c.Request(), c.Response())
 
-	return c.Render(http.StatusOK, "form-login.html", flash)
+	var tmpl, err = template.ParseFiles("views/form-login.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return tmpl.Execute(c.Response(), flash)
 }
 
 func login(c echo.Context) error {
